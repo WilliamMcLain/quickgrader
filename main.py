@@ -23,13 +23,19 @@ def parse_assignment_info(text):
     assignment_name = None
     student_name = None
     
-    # Look for assignment name (typically contains "Homework #")
+    # Look for assignment name (Homework # or Exam #)
     for i, line in enumerate(lines):
+        # Check for Homework
         if 'Homework' in line and '#' in line:
-            # Extract homework number
             match = re.search(r'Homework\s*#?\s*(\d+)', line, re.IGNORECASE)
             if match:
                 assignment_name = f"Homework{match.group(1)}"
+                break
+        # Check for Exam
+        elif 'Exam' in line:
+            match = re.search(r'Exam\s*(\d+)', line, re.IGNORECASE)
+            if match:
+                assignment_name = f"Exam{match.group(1)}"
                 break
     
     # Look for student name (appears after "Student" label)
