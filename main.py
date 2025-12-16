@@ -118,7 +118,7 @@ def rename_pdfs(folder_path):
             continue
         
         # Build new filename
-        base_name = f"BIOE252-Fall-{assignment_name}-{formatted_name}"
+        base_name = f"BIOE252-Fall2025-{assignment_name}-{formatted_name}"
         name_counts[base_name] += 1
         
         # Handle duplicates
